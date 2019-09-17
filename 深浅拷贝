@@ -1,0 +1,35 @@
+### 浅拷贝
+源对象和拷贝后的对象的基本类型属于不同的field所以改变源对象的基本类型不会影响拷贝，但是引用类型refObj仍然是同一个对象，拷贝的就是***内存地址***
+`Object.assign()`
+```
+// saucxs
+let a = {
+    name: "saucxs",
+    book: {
+        title: "You Don't Know JS",
+        price: "45"
+    }
+}
+let b = Object.assign({}, a);
+console.log(b);
+// {
+// 	name: "saucxs",
+// 	book: {title: "You Don't Know JS", price: "45"}
+// } 
+
+a.name = "change";
+a.book.price = "55";
+console.log(a);
+// {
+// 	name: "change",
+// 	book: {title: "You Don't Know JS", price: "55"}
+// } 
+
+console.log(b);
+// {
+// 	name: "saucxs",
+// 	book: {title: "You Don't Know JS", price: "55"}
+// }
+```
+### 深拷贝
+两个变量之间互相不影响，但是速度较慢并且花销较大
